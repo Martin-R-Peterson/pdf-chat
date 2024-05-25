@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import FileUpload from './components/Fileupload';
+import Chat from './components/Chat';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface Message {
+  id:number;
+  text:string;
 }
+
+const App: React.FC = () => {
+  const [documentId, setDocumentId] = useState<string | null>(null);
+
+  return (
+    <div className="bg-black flex items-center justify-center   min-h-screen text-white">
+      <div className="text-center min-w-full">
+        <h1 className="text-5xl font-bold mb-8">PDF Chat</h1>
+        <div>
+          {!documentId && <FileUpload onUpload={setDocumentId} />}
+          {documentId && (
+            <div>
+              <p className="text-lg mb-4">Dokument inläst</p>
+              <Chat documentId={documentId} />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+    
+  );
+};
+
+
 
 export default App;
