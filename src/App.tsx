@@ -18,7 +18,7 @@ const App: React.FC = () => {
           {!documentId && <FileUpload onUpload={setDocumentId} />}
           {documentId && (
             <div>
-              <p className="text-lg mb-4">Dokument inläst</p>
+              <p className="text-lg mb-4">Document scanned</p>
               <Chat documentId={documentId} />
             </div>
           )}

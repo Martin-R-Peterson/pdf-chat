@@ -77,15 +77,20 @@ const Chat: React.FC<ChatPdf> = ({ documentId }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 text-white">
-      <div className="w-full max-w-5xl p-6">
-        <div className="h-96 bg-gray-800 p-4 rounded-lg overflow-y-auto mb-4">
+    <div className="flex flex-col items-center pt-6 min-h-screen bg-gray-950 text-white">
+      <div className="w-full max-w-5xl px-6">
+        <div className="h-96 bg-gray-800 pt-2 p-4 rounded-lg overflow-y-auto mb-4">
+          <div className='mb-4'>
+            <p className="text-green-400 mb-1">Assistant:</p>
+            <p className="bg-gray-700 p-2 rounded-md whitespace-pre-wrap">Your document has been scanned and I'm ready to assist you.</p>
+          </div>
           {chatHistory.map((chat, index) => (
             <div key={index} className="mb-4">
-              <p className="text-blue-400 mb-1">User:</p>
+              <p className="text-blue-400 mb-1">You:</p>
               <p className="bg-gray-700 p-2 rounded-md mb-2">{chat.user}</p>
-              <p className="text-green-400 mb-1">Bot:</p>
-              <p className="bg-gray-700 p-2 rounded-md whitespace-pre-wrap">{chat.bot}</p>
+              
+                <p className="text-green-400 mb-1">Assistant:</p>
+                <p className="bg-gray-700 p-2 rounded-md whitespace-pre-wrap">{chat.bot}</p>
             </div>
           ))}
         </div>
